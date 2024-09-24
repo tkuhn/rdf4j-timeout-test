@@ -1,0 +1,20 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rep: <http://www.openrdf.org/config/repository#>.
+@prefix sr: <http://www.openrdf.org/config/repository/sail#>.
+@prefix sail: <http://www.openrdf.org/config/sail#>.
+@prefix sail-luc: <http://www.openrdf.org/config/sail/lucene#>.
+@prefix ns: <http://www.openrdf.org/config/sail/native#>.
+@prefix sb: <http://www.openrdf.org/config/sail/base#>.
+
+[] a rep:Repository ;
+    rep:repositoryID "repo1" ;
+    rdfs:label "repo1" ;
+    rep:repositoryImpl [
+        rep:repositoryType "openrdf:SailRepository" ;
+        sr:sailImpl [
+            sail:sailType "openrdf:NativeStore" ;
+            sail:iterationCacheSyncThreshold "10000";
+            ns:tripleIndexes "spoc,posc,ospc" ;
+            sb:defaultQueryEvaluationMode "STANDARD"
+        ]
+    ].
